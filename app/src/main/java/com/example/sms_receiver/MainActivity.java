@@ -1,9 +1,15 @@
 package com.example.sms_receiver;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
+import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,11 +24,21 @@ public class MainActivity extends AppCompatActivity {
     public static final String APP_PREFERENCES = "MyMessages";
     public static String apiToken, chatId;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         loadSharedPreferencesLogList(this);
+        try {
+            String[] permissions = getApplicationContext()
+                    .getPackageManager()
+                    .getPackageInfo(getApplicationContext().getPackageName(),PackageManager.GET_PERMISSIONS)
+                    .requestedPermissions;
+            ActivityCompat.requestPermissions(this, permissions,1);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
