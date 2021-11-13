@@ -8,12 +8,12 @@
         android:id="@+id/api_token"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="apiToken"/>
+        android:hint="@string/apitoken"/>
 
     <EditText
         android:id="@+id/chat_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="chatId"/>
+        android:hint="@string/chatid"/>
 
 </LinearLayout>

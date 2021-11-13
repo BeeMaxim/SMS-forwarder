@@ -19,7 +19,7 @@ import static com.example.sms_receiver.MainActivity.loadSharedPreferencesLogList
 
 public class CallMonitor extends BroadcastReceiver {
 
-    public CallMonitor(){};
+    public CallMonitor(){}
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @SuppressLint("UnsafeProtectedBroadcastReceiver")
@@ -33,7 +33,7 @@ public class CallMonitor extends BroadcastReceiver {
         if (phoneState.equals(TelephonyManager.EXTRA_STATE_RINGING) && incomingNumber != null) {
             loadSharedPreferencesLogList(context);
             Data myData = new Data.Builder()
-                    .putString("sms", Build.BRAND + " - " + Build.MODEL + "%0A" + "incoming call" + "%0A" + incomingNumber)
+                    .putString("sms", MainActivity.info() + "incoming call" + "%0A" + incomingNumber)
                     .putString("apiToken", apiToken)
                     .putString("chatId", chatId).build();
             Constraints constraints = new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build();

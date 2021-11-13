@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">SMS-receiver</string>
     <string name="set_api">set api</string>
+    <string name="name">name</string>
+    <string name="apitoken">apiToken</string>
+    <string name="chatid">chatId</string>
 </resources>

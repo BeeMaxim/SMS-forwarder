@@ -10,4 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onSetterClick"/>
+
+    <Button
+        android:id="@+id/name_button"
+        android:text="@string/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onNameClick"/>
 </LinearLayout>

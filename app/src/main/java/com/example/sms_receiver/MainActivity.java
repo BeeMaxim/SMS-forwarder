@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,7 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     public static final String APP_PREFERENCES = "MyMessages";
-    public static String apiToken, chatId;
+    public static String apiToken, chatId, name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences mPrefs = context.getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
         apiToken = mPrefs.getString("apiToken", "");
         chatId = mPrefs.getString("chatId", "");
+        name = mPrefs.getString("name", "");
     }
 
     public static void saveSharedPreferencesLogList(Context context) {
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
         prefsEditor.putString("apiToken", apiToken);
         prefsEditor.putString("chatId", chatId);
+        prefsEditor.putString("name", name);
         prefsEditor.apply();
     }
 
@@ -74,6 +77,32 @@ public class MainActivity extends AppCompatActivity {
         DialogBuilder.setNegativeButton("cancel",
                 (dialog, id) -> dialog.cancel());
         DialogBuilder.create().show();
+    }
+
+    public void onNameClick(View view){
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View window = inflater.inflate(R.layout.name_dialogue, null);
+        EditText nameView = window.findViewById(R.id.name_field);
+        nameView.setText(name);
+        AlertDialog.Builder DialogBuilder = new AlertDialog.Builder(this);
+        DialogBuilder.setView(window);
+
+        DialogBuilder.setPositiveButton("OK",
+                (dialog, id) -> {
+                    name = nameView.getText().toString();
+                });
+        DialogBuilder.setNegativeButton("cancel",
+                (dialog, id) -> dialog.cancel());
+        DialogBuilder.create().show();
+    }
+
+    public static String info() {
+        String result = Build.BRAND + " - " + Build.MODEL;
+        if (name != null && !name.equals("")){
+            result += " (" + name + ")";
+        }
+        result += "%0A";
+        return result;
     }
 
     public static void send(String apiToken, String chatId, String text) throws IOException {
