@@ -17,4 +17,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onNameClick"/>
+
+    <Button
+        android:id="@+id/apps_button"
+        android:text="@string/notifications_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onAppsClick"/>
+
+    <Button
+        android:id="@+id/messages_button"
+        android:text="@string/messages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onMessagesClick"/>
+
+    <TextView
+        android:id="@+id/debug"
+        android:scrollbars = "vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

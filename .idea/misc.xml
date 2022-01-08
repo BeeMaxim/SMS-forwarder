@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/SMSreceiver/app/src/main/res/layout/activity_main.xml" value="0.19927536231884058" />
+        <entry key="..\:/SMSreceiver/app/src/main/res/layout/app_card.xml" value="0.353125" />
+        <entry key="..\:/SMSreceiver/app/src/main/res/layout/apps_list.xml" value="0.3671875" />
+        <entry key="..\:/SMSreceiver/app/src/main/res/layout/message_card.xml" value="0.3671875" />
+        <entry key="..\:/SMSreceiver/app/src/main/res/layout/messages_list.xml" value="0.353125" />
         <entry key="..\:/SMSreceiver/app/src/main/res/layout/name_dialogue.xml" value="0.3671875" />
       </map>
     </option>

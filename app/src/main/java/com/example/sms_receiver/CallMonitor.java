@@ -31,16 +31,14 @@ public class CallMonitor extends BroadcastReceiver {
 
         assert phoneState != null;
         if (phoneState.equals(TelephonyManager.EXTRA_STATE_RINGING) && incomingNumber != null) {
-            loadSharedPreferencesLogList(context);
             Data myData = new Data.Builder()
                     .putString("sms", MainActivity.info() + "incoming call" + "%0A" + incomingNumber)
-                    .putString("apiToken", apiToken)
-                    .putString("chatId", chatId).build();
+                    .build();
             Constraints constraints = new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build();
             OneTimeWorkRequest myWorkRequest = new OneTimeWorkRequest.Builder(SMSWorker.class)
                     .setConstraints(constraints)
                     .setInputData(myData).build();
-            WorkManager.getInstance(context).enqueue(myWorkRequest);
+            WorkManager.getInstance().enqueue(myWorkRequest);
         }
     }
 }

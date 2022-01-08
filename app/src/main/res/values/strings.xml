@@ -4,4 +4,6 @@
     <string name="name">name</string>
     <string name="apitoken">apiToken</string>
     <string name="chatid">chatId</string>
+    <string name="notifications_settings">notifications settings</string>
+    <string name="messages">messages</string>
 </resources>
