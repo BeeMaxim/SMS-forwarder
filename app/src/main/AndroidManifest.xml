@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.sms_receiver"
     android:versionCode="1"
-    android:versionName="1.2.1"
+    android:versionName="1.3.0"
     tools:ignore="QueryAllPackagesPermission">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
@@ -47,10 +48,22 @@
         </receiver>
 
         <receiver android:name=".CallMonitor"
-            android:exported="false"
+            android:exported="true"
             android:enabled="true">
             <intent-filter android:priority="999">
-                <action android:name="android.intent.action.PHONE_STATE"/>
+                <!--<action android:name="android.intent.action.PHONE_STATE"/>-->
+                <action android:name="android.intent.action.SUBSCRIPTION_PHONE_STATE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".BatteryMonitor"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.BATTERY_LOW" />
+                <action android:name="android.intent.action.BATTERY_OKAY" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
             </intent-filter>
         </receiver>
 

@@ -57,7 +57,7 @@ public class PushMonitor extends NotificationListenerService {
             text = "Not defined";
         }
         Data myData = new Data.Builder()
-                .putString("sms", MainActivity.info() + "App: " + label + "%0A" + text)
+                .putString("sms", MainActivity.info() + "App: " + label + "\n" + text)
                 .build();
         Constraints constraints = new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build();
         OneTimeWorkRequest myWorkRequest = new OneTimeWorkRequest.Builder(SMSWorker.class)

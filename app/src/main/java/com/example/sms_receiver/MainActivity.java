@@ -25,9 +25,11 @@ import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,6 +46,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TextView version_view = findViewById(R.id.version_view);
+
+        try {
+            String app_version = this.getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName;
+            version_view.setText("version: " + app_version);
+        } catch (PackageManager.NameNotFoundException e) {
+            version_view.setText("Unknown version");
+        }
+
         try {
             ChosenApps = new HashMap<>();
             loadSharedPreferencesLogList(this);
@@ -180,18 +191,25 @@ public class MainActivity extends AppCompatActivity {
         if (name != null && !name.equals("")){
             result += " (" + name + ")";
         }
-        result += "%0A";
+        result += " ";
         return result;
     }
 
-    public static String format(String text){
-        return text.replace("+", "%2B");
+    public static String format(String text) throws UnsupportedEncodingException {
+        String specialSymbols = "_*[]()~`>#+-=|{}.!";
+        text = text.replace("\\", "\\\\");
+
+        for (int i = 0; i < specialSymbols.length(); ++i) {
+            String current = specialSymbols.substring(i, i + 1);
+            text = text.replace(current, "\\" + current);
+        }
+        return URLEncoder.encode(text, "UTF-8");
     }
 
     public static void send(String apiToken, String chatId, String text) throws IOException {
         HttpURLConnection con = null;
         String urlToken = "https://api.telegram.org/bot"+apiToken+"/sendMessage";
-        String urlParameters = format("chat_id="+chatId+"&text=["+text+"]&parse_mode=Markdown");
+        String urlParameters = "chat_id="+chatId+"&text=["+format(text)+"]&parse_mode=MarkdownV2";
         try {
             URL url = new URL(urlToken);
             con = (HttpURLConnection) url.openConnection();

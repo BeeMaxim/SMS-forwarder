@@ -15,7 +15,6 @@
             <option value="$PROJECT_DIR$/eventbus-3.2.0" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
