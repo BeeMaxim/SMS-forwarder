@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.sms_receiver"
     android:versionCode="1"
-    android:versionName="1.3.0"
+    android:versionName="1.4.1"
     tools:ignore="QueryAllPackagesPermission">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -26,16 +26,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SMSreceiver">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".AppsActivity"/>
-        <activity android:name=".ControlActivity"/>
 
         <receiver android:name=".SMSMonitor"
             android:enabled="true"
@@ -51,31 +49,9 @@
             android:exported="true"
             android:enabled="true">
             <intent-filter android:priority="999">
-                <!--<action android:name="android.intent.action.PHONE_STATE"/>-->
                 <action android:name="android.intent.action.SUBSCRIPTION_PHONE_STATE" />
             </intent-filter>
         </receiver>
-
-        <receiver android:name=".BatteryMonitor"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter android:priority="999">
-                <action android:name="android.intent.action.BATTERY_LOW" />
-                <action android:name="android.intent.action.BATTERY_OKAY" />
-                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
-                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
-            </intent-filter>
-        </receiver>
-
-        <service android:name=".PushMonitor"
-            android:label="@string/app_name"
-            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
-            android:exported="false"
-            android:enabled="true">
-            <intent-filter>
-                <action android:name="android.service.notification.NotificationListenerService" />
-            </intent-filter>
-        </service>
 
     </application>
 

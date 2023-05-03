@@ -6,4 +6,6 @@
     <string name="chatid">chatId</string>
     <string name="notifications_settings">notifications settings</string>
     <string name="messages">messages</string>
+    <string name="unknown_version">unknown version</string>
+    <string name="version_string">version %1$s</string>
 </resources>

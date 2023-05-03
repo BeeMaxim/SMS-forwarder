@@ -9,9 +9,10 @@ android {
     defaultConfig {
         applicationId "com.example.sms_receiver"
         minSdkVersion 24
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 30
         versionCode 1
-        versionName "1.3.0"
+        versionName "1.4.1"
         archivesBaseName = "sms-receiver-" + versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
