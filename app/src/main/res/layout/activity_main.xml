@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:columnCount="2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_gravity="center"
+    android:background="#FFFFF0"
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/version_view"
+        android:text="@string/unknown_version"
+        android:layout_column="1"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_gravity="end"
@@ -16,21 +21,24 @@
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:paddingEnd="20dp"
-        android:paddingRight="30dp"
         tools:ignore="RtlSymmetry" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/setter_button"
         android:text="@string/set_api"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onSetterClick"/>
+        android:layout_height="60dp"
+        android:layout_columnWeight="1"
+        android:layout_margin="10dp"
+        android:onClick="onSetterClick"
+        android:background="@drawable/round_button"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/name_button"
         android:text="@string/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onNameClick"/>
+        android:layout_height="60dp"
+        android:layout_columnWeight="1"
+        android:layout_margin="10dp"
+        android:onClick="onNameClick"
+        android:background="@drawable/round_button"/>
 
-</LinearLayout>
+</GridLayout>

@@ -1,3 +1,2 @@
-include ':eventbus-3.2.0'
 include ':app'
 rootProject.name = "SMS-receiver"

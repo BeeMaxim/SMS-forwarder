@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -92,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
     public void onSetterClick(View view) {
         LayoutInflater inflater = LayoutInflater.from(this);
         View window = inflater.inflate(R.layout.api_dialogue, null);
+
         EditText apiTokenView = window.findViewById(R.id.api_token);
         EditText chatIdView = window.findViewById(R.id.chat_id);
         apiTokenView.setText(apiToken);

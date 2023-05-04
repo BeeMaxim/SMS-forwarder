@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/round_dialog"
     android:orientation="vertical">
 
     <EditText
         android:id="@+id/api_token"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/apitoken"/>
+        android:hint="@string/apitoken"
+        android:autofillHints="no"
+        android:inputType="textMultiLine" />
 
     <EditText
         android:id="@+id/chat_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/chatid"/>
+        android:hint="@string/chatid"
+        android:autofillHints="no"
+        android:inputType="textMultiLine" />
 
 </LinearLayout>
