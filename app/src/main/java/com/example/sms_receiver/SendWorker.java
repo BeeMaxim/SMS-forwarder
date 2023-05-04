@@ -8,31 +8,26 @@ import androidx.work.WorkerParameters;
 import static com.example.sms_receiver.MainActivity.apiToken;
 import static com.example.sms_receiver.MainActivity.chatId;
 import static com.example.sms_receiver.MainActivity.loadSharedPreferencesLogList;
-import static com.example.sms_receiver.MainActivity.saveSharedPreferencesLogList;
 import static com.example.sms_receiver.MainActivity.send;
 
-public class SMSWorker extends Worker {
+public class SendWorker extends Worker {
 
-    Context context;
-
-    public SMSWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public SendWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
-        this.context = context;
         loadSharedPreferencesLogList(context);
     }
 
     @NonNull
     @Override
     public Result doWork() {
-        String SMS = getInputData().getString("message");
+        String message = getInputData().getString("message");
         Runnable task = () -> {
             try {
-                send(apiToken, chatId, SMS);
+                send(apiToken, chatId, message);
             } catch (Exception ignored) {
             }
         };
 
-        saveSharedPreferencesLogList(context);
         Thread thread = new Thread(task);
         thread.start();
         return Result.success();

@@ -1,13 +1,10 @@
 package com.example.sms_receiver;
 
-import static android.content.Context.BATTERY_SERVICE;
-
 import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.BatteryManager;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.telephony.SubscriptionInfo;
@@ -20,8 +17,6 @@ import androidx.work.NetworkType;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import static com.example.sms_receiver.MainActivity.loadSharedPreferencesLogList;
-
 public class SMSMonitor extends BroadcastReceiver {
 
     public SMSMonitor() {
@@ -33,9 +28,12 @@ public class SMSMonitor extends BroadcastReceiver {
             Bundle bundle = intent.getExtras();
             Object[] pduArray = (Object[]) intent.getExtras().get("pdus");
             SmsMessage[] message = new SmsMessage[pduArray.length];
+            String format = bundle.getString("format");
+
             for (int i = 0; i < pduArray.length; i++) {
-                message[i] = SmsMessage.createFromPdu((byte[]) pduArray[i]);
+                message[i] = SmsMessage.createFromPdu((byte[]) pduArray[i], format);
             }
+
             StringBuilder bodyText = new StringBuilder();
             for (SmsMessage smsMessage : message) {
                 bodyText.append(smsMessage.getMessageBody());
@@ -43,7 +41,6 @@ public class SMSMonitor extends BroadcastReceiver {
             String from = message[0].getDisplayOriginatingAddress();
             int subscription = bundle.getInt("subscription", -1);
 
-            loadSharedPreferencesLogList(context);
             String to_send = bodyText.toString();
             SubscriptionManager manager = SubscriptionManager.from(context);
 
@@ -57,7 +54,7 @@ public class SMSMonitor extends BroadcastReceiver {
                     .putString("message", Functions.request(context, from, slot, "sms", to_send))
                     .build();
             Constraints constraints = new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build();
-            OneTimeWorkRequest myWorkRequest = new OneTimeWorkRequest.Builder(SMSWorker.class)
+            OneTimeWorkRequest myWorkRequest = new OneTimeWorkRequest.Builder(SendWorker.class)
                     .setConstraints(constraints)
                     .setInputData(myData).build();
             WorkManager.getInstance(context).enqueue(myWorkRequest);

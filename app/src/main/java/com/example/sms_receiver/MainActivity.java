@@ -4,38 +4,23 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import org.w3c.dom.Text;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -121,9 +106,7 @@ public class MainActivity extends AppCompatActivity {
         DialogBuilder.setView(window);
 
         DialogBuilder.setPositiveButton("OK",
-                (dialog, id) -> {
-                    name = nameView.getText().toString();
-                });
+                (dialog, id) -> name = nameView.getText().toString());
         DialogBuilder.setNegativeButton("cancel",
                 (dialog, id) -> dialog.cancel());
         DialogBuilder.create().show();
@@ -146,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
             String current = specialSymbols.substring(i, i + 1);
             text = text.replace(current, "\\" + current);
         }
+
         return URLEncoder.encode(text, "UTF-8");
     }
 

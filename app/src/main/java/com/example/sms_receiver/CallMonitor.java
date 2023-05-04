@@ -35,7 +35,7 @@ public class CallMonitor extends BroadcastReceiver {
                     .putString("message", Functions.request(context, incomingNumber, slot, "call", ""))
                     .build();
             Constraints constraints = new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build();
-            OneTimeWorkRequest myWorkRequest = new OneTimeWorkRequest.Builder(SMSWorker.class)
+            OneTimeWorkRequest myWorkRequest = new OneTimeWorkRequest.Builder(SendWorker.class)
                     .setConstraints(constraints)
                     .setInputData(myData).build();
             WorkManager.getInstance(context).enqueue(myWorkRequest);
