@@ -1,16 +1,11 @@
 package com.example.sms_receiver;
 
-import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
-import android.telephony.SubscriptionInfo;
-import android.telephony.SubscriptionManager;
 
-import androidx.core.app.ActivityCompat;
 import androidx.work.Constraints;
 import androidx.work.Data;
 import androidx.work.NetworkType;
@@ -42,13 +37,8 @@ public class SMSMonitor extends BroadcastReceiver {
             int subscription = bundle.getInt("subscription", -1);
 
             String to_send = bodyText.toString();
-            SubscriptionManager manager = SubscriptionManager.from(context);
 
-            int slot = -2;
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
-                SubscriptionInfo currentSubscription = manager.getActiveSubscriptionInfo(subscription);
-                slot = currentSubscription.getSimSlotIndex();
-            }
+            int slot = Functions.getSlotBySubscription(context, subscription);
 
             Data myData = new Data.Builder()
                     .putString("message", Functions.request(context, from, slot, "sms", to_send))

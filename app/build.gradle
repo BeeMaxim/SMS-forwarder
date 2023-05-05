@@ -7,10 +7,10 @@ android {
 
     defaultConfig {
         applicationId "com.example.sms_receiver"
-        minSdkVersion 24
+        minSdkVersion 23
         targetSdkVersion 33
         versionCode 1
-        versionName "1.4.5"
+        versionName "1.4.7"
         archivesBaseName = "sms-receiver-" + versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -33,7 +33,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.work:work-runtime:2.8.1'
     testImplementation 'junit:junit:4.13.2'

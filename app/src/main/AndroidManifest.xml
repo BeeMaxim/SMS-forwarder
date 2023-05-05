@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.sms_receiver"
     android:versionCode="1"
-    android:versionName="1.4.5"
+    android:versionName="1.4.7"
     tools:ignore="QueryAllPackagesPermission">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

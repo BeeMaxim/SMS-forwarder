@@ -41,4 +41,16 @@ class Functions {
         String to = "SIM " + (slot + 1) + ": " + simName + ", " + simNumber + "\n";
         return ModelInfo + to + messageType + " from: " + from + "\n" + messageText;
     }
+
+    public static int getSlotBySubscription(Context context, int subscription) {
+        int slot = -1;
+
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+            SubscriptionManager manager = SubscriptionManager.from(context);
+            SubscriptionInfo currentSubscription = manager.getActiveSubscriptionInfo(subscription);
+            slot = currentSubscription.getSimSlotIndex();
+        }
+
+        return slot;
+    }
 }

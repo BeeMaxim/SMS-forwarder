@@ -31,6 +31,11 @@ public class CallMonitor extends BroadcastReceiver {
         if (phoneState.equals(TelephonyManager.EXTRA_STATE_RINGING) && incomingNumber != null) {
             int slot = intent.getIntExtra("slot", -1);
 
+            if (slot == -1) {
+                int subscription = intent.getIntExtra("subscription", -1);
+                slot = Functions.getSlotBySubscription(context, subscription);
+            }
+
             Data myData = new Data.Builder()
                     .putString("message", Functions.request(context, incomingNumber, slot, "call", ""))
                     .build();
