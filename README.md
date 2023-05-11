@@ -1,7 +1,7 @@
 ![min sdk version](https://img.shields.io/badge/min%20sdk%20version-23-green)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?&logo=telegram&logoColor=white)
-# General
+# Overview
 This application sends information about incoming sms and calls to your chosen telegram channel. Minimum sdk version - 23 (Android 6+)
 # Usage
 1. Use BotFather to get a new telegram bot.
