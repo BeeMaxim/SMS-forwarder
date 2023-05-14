@@ -1,3 +1,4 @@
+![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white)
 ![min sdk version](https://img.shields.io/badge/min%20sdk%20version-23-green)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?&logo=telegram&logoColor=white)
