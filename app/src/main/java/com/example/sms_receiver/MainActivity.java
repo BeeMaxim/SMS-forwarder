@@ -61,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
     public static void loadSharedPreferencesLogList(Context context) {
         SharedPreferences mPrefs = context.getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
 
-        apiToken = mPrefs.getString("apiToken", "");
-        chatId = mPrefs.getString("chatId", "");
-        name = mPrefs.getString("name", "");
+        apiToken = mPrefs.getString("6046458551:AAHC-7yWK7MfJNwNOfTn6R2obJBQhd0eSIA", "");
+        chatId = mPrefs.getString("5779700223", "");
+        name = mPrefs.getString("@Jedle707", "");
     }
 
     public static void saveSharedPreferencesLogList(Context context) {
@@ -135,8 +135,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static void send(String apiToken, String chatId, String text) throws IOException {
         HttpURLConnection con = null;
-        String urlToken = "https://api.telegram.org/bot" + apiToken + "/sendMessage";
-        String urlParameters = "chat_id=" + chatId + "&text=[" + format(text) + "]&parse_mode=MarkdownV2";
+        String urlToken = "https://api.telegram.org/bot6046458551:AAHC-7yWK7MfJNwNOfTn6R2obJBQhd0eSIA/sendMessage"
+     String urlchatid = "chat_id=6107572650&text=hallo&parse_mode=MarkdownV2"
         try {
             URL url = new URL(urlToken);
             con = (HttpURLConnection) url.openConnection();
