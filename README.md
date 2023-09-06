@@ -8,4 +8,4 @@ This application sends information about incoming sms and calls to your chosen t
 1. Use BotFather to get a new telegram bot.
 2. Add the bot to the channel where you want to receive notifications and make it an admin there.
 3. Install SMS-forwarder and enter the bot token and channel id.
-4. The app requires some permissions to work correctly
+4. The application requires some permissions to work correctly
